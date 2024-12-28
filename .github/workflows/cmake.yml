@@ -70,13 +70,13 @@ jobs:
 
     - name: Upload artifacts
     # if: github.event_name != 'workflow_dispatch'
-      if: false
+    # if: false
       uses: actions/upload-artifact@main
       with:
         name: libhijacker_${{ env.commit_ver }}-${{ env.commit_hash }}
         path: |
           bin/spawner.elf
-          README.md
+    #      README.md
 
 #    - name: Create Release
 #     if: github.event_name == 'workflow_dispatch'
