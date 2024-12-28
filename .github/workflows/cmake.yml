@@ -78,10 +78,10 @@ jobs:
           bin/spawner.elf
           README.md
 
-    - name: Create Release
-      if: github.event_name == 'workflow_dispatch'
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-        zip libhijacker_${{ env.commit_ver }}-${{ env.commit_hash }}.zip bin/spawner.elf README.md
-        gh release create ${{ env.commit_ver }}-${{ env.commit_hash }} libhijacker_${{ env.commit_ver }}-${{ env.commit_hash }}.zip --target ${{ GITHUB.SHA }} -t "${{ env.commit_ver }}" -F README.md
+#    - name: Create Release
+#     if: github.event_name == 'workflow_dispatch'
+#      env:
+#        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#      run: |
+#        zip libhijacker_${{ env.commit_ver }}-${{ env.commit_hash }}.zip bin/spawner.elf README.md
+#        gh release create ${{ env.commit_ver }}-${{ env.commit_hash }} libhijacker_${{ env.commit_ver }}-${{ env.commit_hash }}.zip --target ${{ GITHUB.SHA }} -t "${{ env.commit_ver }}" -F README.md
