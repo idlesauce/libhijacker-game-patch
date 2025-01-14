@@ -36,6 +36,11 @@ static constexpr uint32_t V403 = 0x4030000;
 static constexpr uint32_t V450 = 0x4500000;
 static constexpr uint32_t V451 = 0x4510000;
 
+static constexpr uint32_t V500 = 0x5000000;
+static constexpr uint32_t V502 = 0x5020000;
+static constexpr uint32_t V510 = 0x5100000;
+static constexpr uint32_t V550 = 0x5500000;
+
 static uint32_t getSystemSwVersion() {
 	static uint32_t version;
 	if (version != 0) [[likely]] {
@@ -91,6 +96,12 @@ size_t allproc() {
 		case V451:
 			allprocOffset = 0x27EDCB8;
 			break;
+		case V500:
+		case V502:
+		case V510:
+		case V550:
+			allprocOffset = 0x0355DD00;
+			break;
 		default:
 			allprocOffset = -1;
 			break;
@@ -125,6 +136,7 @@ size_t security_flags() {
 		case V320:
 		case V321:
 			return 0x6466474;
+		
 		case V400:
 			return 0x6506474;
 		case V402:
@@ -132,6 +144,12 @@ size_t security_flags() {
 		case V450:
 		case V451:
 			return 0x6505474;
+		
+		case V500:
+		case V502:
+		case V510:
+		case V550:
+			return 0x072866EC;
 		default:
 			return -1;
 	}
@@ -164,12 +182,19 @@ size_t qa_flags() {
 		case V320:
 		case V321:
 			return 0x6466498;
+		
 		case V400:
 		case V402:
 		case V403:
 		case V450:
 		case V451:
 			return 0x6506498;
+		
+		case V500:
+		case V502:
+		case V510:
+		case V550:
+			return 0x07286710;
 		default:
 			return -1;
 	}
@@ -202,12 +227,19 @@ size_t utoken_flags() {
 		case V320:
 		case V321:
 			return 0x6466500;
+		
 		case V400:
 		case V402:
 		case V403:
 		case V450:
 		case V451:
 			return 0x6506500;
+		
+		case V500:
+		case V502:
+		case V510:
+		case V550:
+			return 0x07286778;
 		default:
 			return -1;
 	}
@@ -240,12 +272,19 @@ size_t root_vnode() {
 		case V320:
 		case V321:
 			return 0x67AB4C0;
+		
 		case V400:
 		case V402:
 		case V403:
 		case V450:
 		case V451:
 			return 0x66E74C0;
+
+		case V500:
+		case V502:
+		case V510:
+		case V550:
+			return 0x07493510;
 		default:
 			return -1;
 	}
